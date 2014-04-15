@@ -31,6 +31,14 @@ db.highscores.save(testUser, function(err, savedUser) {
   console.log("User successfully added. Name: "+ savedUser.username);
 });
 
+db.highscores.find(testUser, function(err, highscores) {
+  if(err || !highscores.length)
+    console.log("User "+ highscore.username +" not found.");
+    else highscores.forEach(function (username) {
+      console.log("User found! Username: "+username + " score: "+score);
+    });
+});
+
 console.log('\t Listening on port: ' + gameport );
 
 //By default, we forward the / path to index.html automatically.
