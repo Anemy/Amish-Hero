@@ -15,7 +15,7 @@ server.listen(gameport);//gameport);//, 'stick-battle.com');
 //set up mongodb
 var dburl = 'stick-battle.com:8008/mongoapp';
 var collections = ['highscores'];
-var db = require('mongojs').connect(dburl, connections);
+var db = require('mongojs').connect(dburl, collections);
 
 var highscore = function(username, score) {
   this.username = username;
