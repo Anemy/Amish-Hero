@@ -13,7 +13,7 @@ var version = 1.01;
 server.listen(gameport);//gameport);//, 'stick-battle.com');
 
 //set up mongodb
-var dburl = 'stick-battle.com:8008/mongoapp';
+var dburl = '107.170.27.58/mongoapp';
 var collections = ['highscores'];
 var db = require('mongojs').connect(dburl, collections);
 
