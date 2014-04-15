@@ -24,7 +24,7 @@ var highscore = function(username, score) {
 
 var testUser = new highscore("Rhys",100);
 
-db.users.save(testUser, function(err, savedUser) {
+db.highscores.save(testUser, function(err, savedUser) {
   if(err || !savedUser) {
     console.log("Failed saving a user.");
   }else
