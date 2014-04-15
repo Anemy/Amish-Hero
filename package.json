@@ -10,7 +10,7 @@
   },
   "engine": {
     "node": "0.10.x"
-  }
+  },
   "repository" :
  {
    "type" : "git",
