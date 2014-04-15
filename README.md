@@ -3,13 +3,13 @@ Amish-Hero
 
 JS game Amish Harvest Hero - Web version
 
-Folders:
+Folders =
 icons - image files for icons
 audio
 images
 js
 
-Code:
+Code =
 app - node app
 index.html - webpage
   base.js - main index usage
