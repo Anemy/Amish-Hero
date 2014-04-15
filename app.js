@@ -1,5 +1,5 @@
 var
-    gameport = process.env.PORT || 8008,//4420 main //6333 dev
+    gameport = process.env.PORT || 6333,//8008 main //6333 dev
     //gameport = 'stick-battle.com',
 
     express         = require('express'),
@@ -28,4 +28,4 @@ app.get( '/*' , function( req, res, next ) {
         //Send the requesting client the file.
     res.sendfile( __dirname + '/' + file );
 
-}); //app.get 
+}); //app.get
