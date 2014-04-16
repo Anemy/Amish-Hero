@@ -17,6 +17,10 @@ var dburl = '107.170.27.58/mongoapp';
 var collections = ['highscores'];
 var db = require('mongojs').connect(dburl, collections);
 
+//db.users.remove({'username':'Rhys'});
+
+db.highscores.ensureIndex({username:1} , {unique : true});
+
 var highscore = function(username, score) {
   this.username = username;
   this.score = score;
