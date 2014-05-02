@@ -259,7 +259,7 @@ function update(delta) {
                     drops[i].alive = false;
 
                     if(drops[i].good) {
-                        document.getElementById("yumyum").play();
+                        document.getElementById("coin").play();
                         //drop some particles
                         var numberOfPartsToAdd = 25;
                         for(k = 0; k < numberOfParts; k++) {
@@ -311,7 +311,7 @@ function update(delta) {
                         }
                     }
                     else {
-                        document.getElementById("ouch").play();
+                        document.getElementById("hurt").play();
                         hero.lives -= 1;
                         if(hero.lives == -1) {
                             if(hero.points > mostPoints) {
