@@ -31,6 +31,8 @@ var cursorX = 0;
 //image variables
 var heroSpriteSheet;
 var dogeSpriteSheet;
+var heroLife;
+var dogeLife;
 var backgroundImage;
 var titleScreenImage;
 var cloudImage;
@@ -57,6 +59,9 @@ function loadImages() {
     harvestImages[0].src = "images/harvested1.png";
     harvestImages[1] = new Image();
     harvestImages[1].src = "images/harvested2.png";
+    
+    sky = new Image();
+    sky.src = "images/sky.png";
 
     titleScreenImage = new Image();
     titleScreenImage.src = "images/title.png";
@@ -69,9 +74,20 @@ function loadImages() {
 
     heroSpriteSheet = new Image();
     heroSpriteSheet.src = "images/characterSpriteSheet.png";
-
+    
     dogeSpriteSheet = new Image();
     dogeSpriteSheet.src = "images/characterSpriteSheet2.png";
+    
+    
+    //UI Stuff
+    heroLife = new Image();
+    heroLife.src = "images/heroLife.png";
+    
+    dogeLife = new Image();
+    dogeLife.src = "images/dogeLife.png";
+    
+    amishPower = new Image();
+    amishPower.src = "images/amishPower.png";
 
     cursorImage = new Image();
     cursorImage.src = "images/cursor.png";
@@ -166,10 +182,11 @@ function getNeg (toNegate) {
 function render() {
     ctx.clearRect(0, 0, gameWidth, gameHeight);
     //background -> PURP jav
-    ctx.fillStyle = "rgb(230, 150, 230)";//light purpe
-    ctx.fillStyle = "rgb(236, 240, 241)";//clouds
-    ctx.fillStyle = "rgb(63, 161, 211)";//lightish blue
-    ctx.fillRect(0, 0, gameWidth, gameHeight);
+    //ctx.fillStyle = "rgb(230, 150, 230)";//light purpe
+    //ctx.fillStyle = "rgb(236, 240, 241)";//clouds
+    //ctx.fillStyle = "rgb(63, 161, 211)";//lightish blue
+    //ctx.fillRect(0, 0, gameWidth, gameHeight);
+    ctx.drawImage(sky, 0, 0, gameWidth, gameHeight);
 
     ctx.drawImage(cloudImage, cloudX, 0, gameWidth, 164*scale);
     ctx.drawImage(cloudImage, cloudX - gameWidth, 0, gameWidth, 164*scale);
@@ -259,7 +276,7 @@ function update(delta) {
                     drops[i].alive = false;
 
                     if(drops[i].good) {
-                        document.getElementById("coin").play();
+                        document.getElementById("yumyum").play();
                         //drop some particles
                         var numberOfPartsToAdd = 25;
                         for(k = 0; k < numberOfParts; k++) {

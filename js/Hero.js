@@ -32,10 +32,21 @@ function draw_hero(ctx) {
         //ctx.font = ("20px Arial");
         ctx.font = ("20px 'Press Start 2P'");
         ctx.fillStyle = "rgb(211, 84, 0)";
-        ctx.fillText("Harvest: " + hero.points, 5*scale, gameHeight - 23*scale);
+        ctx.fillText("Harvest: " + hero.points, 5*scale, gameHeight - 35*scale);
 
         ctx.fillStyle = "rgb(15, 15, 40)";
-        ctx.fillText("Amish Power: " + hero.lives, 5*scale, gameHeight - 3*scale);
+        if(!hero.dogeEnabled) {
+            for(var i = 0; i < hero.lives; i++) {
+                ctx.drawImage(heroLife, (200 + 32 * i) * scale, gameHeight - 32*scale, 32 * scale, 32 * scale);
+            }
+        }
+        else {
+            for(var i = 0; i < hero.lives; i++) {
+                ctx.drawImage(dogeLife, (200 + 32 * i) * scale, gameHeight - 32*scale, 32 * scale, 32 * scale);
+            }
+        }
+        ctx.drawImage(amishPower, 0, gameHeight - 29 * scale);
+        //ctx.fillText("Amish Power: ", 5*scale, gameHeight - 3*scale);
 
         if(!hero.dogeEnabled) {
             if(hero.right == false && hero.left == false) {
