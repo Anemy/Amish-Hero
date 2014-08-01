@@ -38,7 +38,7 @@ db.highscores.save(testUser, function(err, savedUser) {
 db.highscores.find(testUser, function(err, highscores) {
   if(err || !highscores.length)
     console.log("User "+ highscore.username +" not found.");
-    else highscores.forEach(function (username) {
+    else highscores.forEach(function (username, score) {
       console.log("User found! Username: "+username + " score: "+score);
     });
 });
