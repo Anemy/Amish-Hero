@@ -39,6 +39,9 @@ var cloudImage;
 var dropImages = [];
 var harvestImages = [];
 var cursorImage;
+var harvest;
+var amishPower;
+var scoreImage;
 
 //java script b weird
 var i = 0;
@@ -88,6 +91,12 @@ function loadImages() {
     
     amishPower = new Image();
     amishPower.src = "images/amishPower.png";
+
+    harvest = new Image();
+    harvest.src = "images/harvest.png";
+
+    scoreImage = new Image();
+    scoreImage.src = "images/score.png"
 
     cursorImage = new Image();
     cursorImage.src = "images/cursor.png";
@@ -226,13 +235,13 @@ function render() {
     ctx.fillStyle = "rgb(52, 73, 94)";
     if(paused) {
         //ctx.fillStyle = "rgb(39, 174, 96)";
-        ctx.font = ("20px 'Press Start 2P'");
-        ctx.fillText("Press \'p\' to unpause!", gameWidth/2 - 150*scale, gameHeight/2 + 25*scale);
+        ctx.font = ("50px 'Score'");
+        ctx.fillText("Press \'p\' to unpause!", gameWidth/2 - 175*scale, gameHeight/2 + 25*scale);
     } else if(!play) {
         //ctx.fillStyle = "rgb(39, 174, 96)";
-        ctx.font = ("20px 'Press Start 2P'");
+        ctx.font = ("50px 'Score'");
         if(mostPoints != 0) {
-            ctx.fillText("Your previous best: "+mostPoints, gameWidth/2 - 155*scale, gameHeight - 5*scale);
+            ctx.fillText("Your previous best: "+mostPoints, gameWidth/2 - 200*scale, gameHeight - 5*scale);
         }//titleScreenImage
         ctx.drawImage(titleScreenImage, 0, 0, gameWidth, gameHeight);
         //ctx.fillText("Use your arrow keys or \'A\'+\'D\' to stay Amish!", gameWidth/2 - 225*scale, gameHeight/2 - 25*scale);

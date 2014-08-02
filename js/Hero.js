@@ -30,19 +30,28 @@ var player = function () {
 function draw_hero(ctx) {
     if(play) {
         //ctx.font = ("20px Arial");
-        ctx.font = ("20px 'Press Start 2P'");
-        ctx.fillStyle = "rgb(211, 84, 0)";
-        ctx.fillText("Harvest: " + hero.points, 5*scale, gameHeight - 35*scale);
+        ctx.drawImage(harvest, 0, gameHeight - 61 * scale);
+        ctx.drawImage(scoreImage, 95, gameHeight - 71 * scale);
+        ctx.font = ("20px 'Score'");
+        ctx.fillStyle = "rgb(44, 62, 80)";
+        if(hero.points < 10)
+            ctx.fillText(hero.points, 105*scale, gameHeight - 38*scale);
+        else if(hero.points >= 10 && hero.points < 100)
+            ctx.fillText(hero.points, 101*scale, gameHeight - 38*scale);
+        else {
+            ctx.font = ("15px 'Score'");
+            ctx.fillText(hero.points, 100*scale, gameHeight - 38*scale);
+        }
 
         ctx.fillStyle = "rgb(15, 15, 40)";
         if(!hero.dogeEnabled) {
             for(var i = 0; i < hero.lives; i++) {
-                ctx.drawImage(heroLife, (200 + 32 * i) * scale, gameHeight - 32*scale, 32 * scale, 32 * scale);
+                ctx.drawImage(heroLife, (125 + 32 * i) * scale, gameHeight - 32*scale, 32 * scale, 32 * scale);
             }
         }
         else {
             for(var i = 0; i < hero.lives; i++) {
-                ctx.drawImage(dogeLife, (200 + 32 * i) * scale, gameHeight - 32*scale, 32 * scale, 32 * scale);
+                ctx.drawImage(dogeLife, (125 + 32 * i) * scale, gameHeight - 32*scale, 32 * scale, 32 * scale);
             }
         }
         ctx.drawImage(amishPower, 0, gameHeight - 29 * scale);
