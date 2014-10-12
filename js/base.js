@@ -4,6 +4,7 @@
 
 var canvas;
 var ctx;
+var input;
 
 var originalWidth = 800;
 var originalHeight = 600;
@@ -28,6 +29,8 @@ var mostPoints = 0;
 var dogeUnlocked = false;
 var cursorX = 0;
 
+var muted = false;
+
 //image variables
 var heroSpriteSheet;
 var dogeSpriteSheet;
@@ -42,6 +45,8 @@ var cursorImage;
 var harvest;
 var amishPower;
 var scoreImage;
+var speakerImage;
+var muteImage;
 
 //java script b weird
 var i = 0;
@@ -100,6 +105,12 @@ function loadImages() {
 
     cursorImage = new Image();
     cursorImage.src = "images/cursor.png";
+
+    speakerImage = new Image();
+    speakerImage.src = "images/speaker.png";
+
+    muteImage = new Image();
+    muteImage.src = "images/speakerMute.png";
 }
 
 function init() {
@@ -210,6 +221,11 @@ function render() {
 
     ctx.drawImage(backgroundImage, 0, 0, gameWidth, gameHeight);
 
+    if(muted)
+        ctx.drawImage(muteImage, gameWidth - 50, gameHeight - 50, 37, 37);
+    else
+        ctx.drawImage(speakerImage, gameWidth - 50, gameHeight - 50, 37, 37);
+
     /*for(i = 0; i < floorGrad; i++) {
         //ctx.fillStyle = "rgb(39, 174, 96)"; green
         //(150, 75, 0) brown
@@ -230,6 +246,13 @@ function render() {
         ctx.fillStyle="red"; 
         ctx.fillRect(0,0,gameWidth,gameHeight);
         ctx.globalAlpha = 1;
+    }
+
+    if(muted) {
+        document.getElementById("id1").muted = true;
+    }
+    else {
+        document.getElementById("id1").muted = false;
     }
 
     ctx.fillStyle = "rgb(52, 73, 94)";
@@ -285,7 +308,8 @@ function update(delta) {
                     drops[i].alive = false;
 
                     if(drops[i].good) {
-                        document.getElementById("yumyum").play();
+                        if(!muted)
+                            document.getElementById("yumyum").play();
                         //drop some particles
                         var numberOfPartsToAdd = 25;
                         for(k = 0; k < numberOfParts; k++) {
@@ -337,7 +361,8 @@ function update(delta) {
                         }
                     }
                     else {
-                        document.getElementById("hurt").play();
+                        if(!muted)
+                            document.getElementById("hurt").play();
                         hero.lives -= 1;
                         if(hero.lives == -1) {
                             if(hero.points > mostPoints) {
@@ -415,6 +440,9 @@ function keyReleased(e) {
 
     if(upKey == 80)
         paused = !paused;
+
+    if(upKey == 77)
+        muted = !muted;
 
     if(upKey == 32) {
         if(!play) {
