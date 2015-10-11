@@ -67,7 +67,7 @@ function loadImages() {
     harvestImages[0].src = "images/harvested1.png";
     harvestImages[1] = new Image();
     harvestImages[1].src = "images/harvested2.png";
-    
+
     sky = new Image();
     sky.src = "images/sky.png";
 
@@ -82,18 +82,18 @@ function loadImages() {
 
     heroSpriteSheet = new Image();
     heroSpriteSheet.src = "images/characterSpriteSheet.png";
-    
+
     dogeSpriteSheet = new Image();
     dogeSpriteSheet.src = "images/characterSpriteSheet2.png";
-    
-    
+
+
     //UI Stuff
     heroLife = new Image();
     heroLife.src = "images/heroLife.png";
-    
+
     dogeLife = new Image();
     dogeLife.src = "images/dogeLife.png";
-    
+
     amishPower = new Image();
     amishPower.src = "images/amishPower.png";
 
@@ -233,7 +233,7 @@ function render() {
         var g = 174 - ((174 - 75)/floorGrad)*i;
         var b = 96 - ((96)/floorGrad)*i;
         ctx.fillStyle = "rgb("+ r + ", "+ g + ", "+ b + ")";//floor grad color
-        ctx.fillRect(0, gameHeight - (floorGrad-i)*(floorSize/floorGrad), gameWidth, i*(floorSize/floorGrad)); 
+        ctx.fillRect(0, gameHeight - (floorGrad-i)*(floorSize/floorGrad), gameWidth, i*(floorSize/floorGrad));
     }*/
 
     draw_hero(ctx);
@@ -243,7 +243,7 @@ function render() {
         if(!paused)
             hurtAnimation--;
         ctx.globalAlpha = 0.6*(hurtAnimation/100);
-        ctx.fillStyle="red"; 
+        ctx.fillStyle="red";
         ctx.fillRect(0,0,gameWidth,gameHeight);
         ctx.globalAlpha = 1;
     }
@@ -328,7 +328,7 @@ function update(delta) {
                                 //console.log("New particle added xv: "+parts[k].xdir + " yv: "+parts[k].ydir);
                             }
                         }
-                            
+
                         //harvMSGs
                         for(k = 0; k < numberOfMsg; k++) {
                             if(harvMSGs[k].alive == false) {
@@ -361,8 +361,10 @@ function update(delta) {
                         }
                     }
                     else {
-                        if(!muted)
+                        if (!muted && hero.lives > 0)
                             document.getElementById("hurt").play();
+                        if (!muted && hero.lives == 0)
+                            document.getElementById("wilhelm").play();
                         hero.lives -= 1;
                         if(hero.lives == -1) {
                             if(hero.points > mostPoints) {
@@ -374,8 +376,8 @@ function update(delta) {
                         }
                         hurtAnimation = 100;
                     }
-                } 
-            } 
+                }
+            }
         }
     }
 
