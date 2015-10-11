@@ -361,8 +361,10 @@ function update(delta) {
                         }
                     }
                     else {
-                        if(!muted)
+                        if (!muted && hero.lives > 0)
                             document.getElementById("hurt").play();
+                        if (!muted && hero.lives == 0)
+                            document.getElementById("wilhelm").play();
                         hero.lives -= 1;
                         if(hero.lives == -1) {
                             if(hero.points > mostPoints) {
